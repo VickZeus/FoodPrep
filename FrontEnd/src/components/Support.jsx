@@ -1,9 +1,12 @@
+import style from './Support.module.css'
 function Support()
 {
     return(
-        <>
-            <h1>Support Page Under Development !!</h1>
-        </>
+        <div className={style.page}>
+            <div className={style.box}>
+                <h1>Got An Issue ? </h1>
+            </div>
+        </div>
     )
 }
 
