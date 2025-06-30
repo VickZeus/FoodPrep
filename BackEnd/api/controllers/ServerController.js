@@ -1,6 +1,7 @@
 
 const mongoose=require('mongoose')
 const Regmod=require('../model/RegisterSchema')
+const Logmod=require('../model/LoginSchema')
 
 
 const path = require('path')
@@ -17,6 +18,57 @@ app.use(cors());
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
 app.use(express.static(path.join(__dirname, "..", "FrontEnd", "public")));
+
+
+app.post('/Login',async(req,res)=>{
+    console.log('Entered Data : ',req.body)
+    const {username,password}=req.body
+    const ans=await Regmod.findOne({username:username.trim().toLowerCase()})
+    console.log('SMaller USer : ',username.trim().toLowerCase())
+    console.log('DBData : ',ans)
+    if(username==null)
+    {
+        return res.status(400).json({message:'Username is null',redirect:'/Login' })
+    }
+    if(password==null)
+    {
+        return res.status(400).json({message:'Password is null',redirect:'/Login' })
+    }
+
+
+    if(ans===null)
+    {
+        return res.status(400).json({message:'No User Found',redirect:'/Login' })
+    }
+    const isMatch=await bcrypt.compare(password,ans.password)
+    if(isMatch)
+    {
+        LogHistory(req,'Success')
+        return res.status(200).json({message: ' Login Successfull',redirect:'/HomePage'})
+
+    }
+    else 
+    {
+        LogHistory(req,'Failure')
+        return res.status(400).json({message: 'Invalid Password',redirect:'/Login'})
+    }
+})
+
+async function LogHistory(req,status)
+{
+    try 
+    {
+        const {username}=req.body
+        console.log(username,status)
+        const newUser=new Logmod({username,status})
+        await newUser.save()
+    }
+    catch(error)
+    {
+        console.log('Login History Updated',error)
+    }
+}
+
 
 
 app.post('/Register',async(req,res)=>{
@@ -51,5 +103,9 @@ app.post('/Register',async(req,res)=>{
 app.get('/Register',async(req,res)=>{
     res.send('Register Page Requested !')
 })
+
+
+
+
 
 module.exports=app

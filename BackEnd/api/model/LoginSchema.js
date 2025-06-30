@@ -1,14 +1,17 @@
 const mongoose=require('mongoose')
 const schema=new mongoose.Schema({
-    Username:{
+    username:{
         type:String,
-        required:true
+        required:true,
+        lowercase:true
     },
 
-    Password:{
+    status:{
         type:String,
         required:true
     }
+},{
+    timestamps:true
 })
 const Logmod=mongoose.model('Login_History',schema)
 module.exports=Logmod
