@@ -68,6 +68,16 @@
     justify-content: center;
 }
 
+.searchBarSection2
+{
+    padding:20px;
+    margin-top:0px;
+    width:100vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
 .searchBar 
 {
     width:min(50%,350px);
@@ -80,7 +90,7 @@
 .searchButton
 {
     
-    background-color: transparent;
+    background-color: aliceblue;
     border-radius:50%;
     width:fit-content;
     padding:2px;
@@ -155,3 +165,69 @@
 {
     border-radius:20px;
 }
+
+.MainContent 
+{
+    background-color: rgb(249, 216, 49);
+    height:65vh;
+    width:100vw;
+}
+
+
+.itemsection
+{
+    margin:auto;
+    height:40vh;
+    width:fit-content;
+    padding:20px;
+    background-color: rgb(251, 238, 205);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 10px;
+}
+
+.itembox 
+{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+    font-family:"Zain", sans-serif;
+    font-size: min(3vmin,24px);
+}
+
+.itemhead 
+{
+    font-weight: 600;
+    margin-right:20px;
+}
+
+.itemdet 
+{
+    border-radius: 10px;
+    padding:5px;
+}
+
+.button2 
+{
+    background-color:aquamarine;
+    border-color:transparent;
+    border-radius:4px;
+    
+    width:fit-content;
+    padding:2px 5px;
+
+    font-size:min(2.5vmin,18px);
+    font-family: "Kantumruy Pro", sans-serif;
+    font-weight: 600;
+}
+
+.itemname
+{
+    font-family:"Zain", sans-serif;
+    font-size: min(3vmin,24px);  
+}
+

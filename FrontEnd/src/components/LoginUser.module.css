@@ -175,4 +175,17 @@ CSS Specific to register page begins below
     background-color: aquamarine;
 }
 
-.
+.heading 
+{
+    font-family:"Zain", sans-serif;
+    font-weight:800;
+    font-size: min(3vmin,24px);
+    margin-right:5px;
+}
+
+.details 
+{
+    font-family:"Zain", sans-serif;
+    font-weight:400;
+    font-size: min(3vmin,24px);  
+}

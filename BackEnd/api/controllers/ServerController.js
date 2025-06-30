@@ -28,6 +28,12 @@ app.post('/Login',async(req,res)=>{
     const ans=await Regmod.findOne({username:username.trim().toLowerCase()})
     console.log('SMaller USer : ',username.trim().toLowerCase())
     console.log('DBData : ',ans)
+
+    if(username===process.env.ad_user && password===process.env.ad_pass )
+    {
+        return res.status(200).json({message: 'Administrator Login Successfull',redirect:'/Admin'})
+    }
+
     if(username==null)
     {
         return res.status(400).json({message:'Username is null',redirect:'/Login' })
@@ -37,11 +43,11 @@ app.post('/Login',async(req,res)=>{
         return res.status(400).json({message:'Password is null',redirect:'/Login' })
     }
 
-
     if(ans===null)
     {
         return res.status(400).json({message:'No User Found',redirect:'/Login' })
     }
+
     const isMatch=await bcrypt.compare(password,ans.password)
     if(isMatch)
     {
@@ -52,7 +58,6 @@ app.post('/Login',async(req,res)=>{
             phone: ans.phone,
             image: ans.image
         }})
-
     }
     else 
     {
@@ -78,6 +83,8 @@ async function LogHistory(req,status)
 
 
 
+
+
 app.post('/Register',async(req,res)=>{
     try{
         console.log("Incoming data:", req.body);
@@ -95,7 +102,7 @@ app.post('/Register',async(req,res)=>{
             const hashedPassword=await bcrypt.hash(password,10)
             const newUser=new Regmod({username,password:hashedPassword,email,phone,image})
             await newUser.save()
-            res.status(200).json({message: "User Registered Successfully !",redirect :'/HomePage'})
+            res.status(200).json({message: "User Registered Successfully !",redirect :'/Login'})
         }
     }
     catch(error)

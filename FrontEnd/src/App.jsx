@@ -7,6 +7,9 @@ import {HomePage} from './components/HomePage'
 import Account from './components/Account'
 import Cart from './components/Cart'
 import Support from './components/Support'
+import {AdminUI} from './components/AdminUI'
+import Inventory from './components/Inventory';
+
 
 
 
@@ -15,12 +18,14 @@ function App()
     return(
         <BrowserRouter>
         <Routes>
+            <Route path="/Inventory" element={<Inventory/>}/>
             <Route path="/Login" element={<LoginUser/>}/>
             <Route path="/Register" element={<RegisterUser/>}/>
             <Route path="/HomePage" element={<HomePage/>}/>
             <Route path="/Account" element={<Account/>}/>
             <Route path="/Cart" element={<Cart/>}/>
             <Route path="/Support" element={<Support/>}/>
+            <Route path="/Admin" element={<AdminUI/>}/>
         </Routes>
         </BrowserRouter>
     )
