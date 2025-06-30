@@ -27,10 +27,12 @@ function LoginUser()
         {
         window.location.href = response.redirect;
         }
+    if (response.user) {
+        localStorage.setItem('user', JSON.stringify(response.user));
+    }
     })
     .catch((err) => {
         console.error('Error:', err);
-        
     });
     }
 

@@ -20,6 +20,8 @@ app.use(express.json())
 app.use(express.static(path.join(__dirname, "..", "FrontEnd", "public")));
 
 
+
+
 app.post('/Login',async(req,res)=>{
     console.log('Entered Data : ',req.body)
     const {username,password}=req.body
@@ -44,7 +46,12 @@ app.post('/Login',async(req,res)=>{
     if(isMatch)
     {
         LogHistory(req,'Success')
-        return res.status(200).json({message: ' Login Successfull',redirect:'/HomePage'})
+        return res.status(200).json({message: ' Login Successfull',redirect:'/HomePage',user:{
+            username:ans.username,
+            email: ans.email,
+            phone: ans.phone,
+            image: ans.image
+        }})
 
     }
     else 
