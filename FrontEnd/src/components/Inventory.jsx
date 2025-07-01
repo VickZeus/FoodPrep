@@ -45,7 +45,7 @@ function Main()
     }); 
     const fetchItem = async (itemName) => {
         try {
-            const res = await fetch(`http://localhost:3000/Inventory?name=${itemName}`);
+            const res = await fetch(`https://foodprep-vhkl.onrender.com/Inventory?name=${itemName}`);
             const data = await res.json();
 
             if (res.ok) {
@@ -98,7 +98,8 @@ function ItemDetails({item})
 
     const handleSave = async () => {
         try {
-            const res = await fetch(`http://localhost:3000/Inventory/${formData.name}`, {
+            const res = await fetch('https://foodprep-vhkl.onrender.com/Inventory/${formData.name}'
+, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'

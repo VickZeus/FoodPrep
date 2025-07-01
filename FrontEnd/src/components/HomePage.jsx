@@ -88,8 +88,8 @@ function Recommendation()
 
     const fetchItems = async (name = '') => {
         const url = name
-            ? `http://localhost:3000/HomePage?name=${name}`
-            : `http://localhost:3000/HomePage`; // default random
+    ? `https://foodprep-vhkl.onrender.com/HomePage?name=${name}`
+    : `https://foodprep-vhkl.onrender.com/HomePage`;
 
         try {
             const res = await fetch(url);

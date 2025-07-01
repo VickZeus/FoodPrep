@@ -34,7 +34,7 @@ function Drop()
     }); 
     const fetchItem = async (itemName) => {
         try {
-            const res = await fetch(`http://localhost:3000/Inventory?name=${itemName}`);
+            const res = await fetch(`https://foodprep-vhkl.onrender.com/Inventory?name=${itemName}`);
             const data = await res.json();
 
             if (res.ok) {

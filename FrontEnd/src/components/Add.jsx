@@ -21,7 +21,7 @@ function Add()
         price
         };
 
-        fetch('http://localhost:3000/Add', {
+        fetch('https://your-app-name.onrender.com/Add', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

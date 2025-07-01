@@ -25,7 +25,7 @@ function RegisterUser()
         image:arr[i]
         };
 
-        fetch('http://localhost:3000/Register', {
+        fetch('https://foodprep-vhkl.onrender.com/Register', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
