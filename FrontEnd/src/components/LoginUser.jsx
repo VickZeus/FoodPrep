@@ -40,7 +40,7 @@ function LoginUser()
         <form onSubmit={handleSubmit}>
         <div className={style.LoginContainer}>
             <div className={style.LoginBox}>
-                <img src='public/FoodPrepImage.jpg' className={style.image} alt='Food_Prep_Image'></img>
+                <img src='/FoodPrepImage.jpg' className={style.image} alt='Food_Prep_Image'></img>
 
                 <div className={style.content}>
                     <div className={style.title}>FoodPrep</div>

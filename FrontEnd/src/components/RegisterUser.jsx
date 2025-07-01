@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 function RegisterUser()
 {
-    const arr=['public/profilepics/pic1.png', 'public/profilepics/pic2.png', 'public/profilepics/pic3.png','public/profilepics/pic4.png']
+    const arr=['/profilepics/pic1.png', '/profilepics/pic2.png', '/profilepics/pic3.png','/profilepics/pic4.png']
     const [i,changeIndex]=useState(0);
     function ChangeImage()
     {
