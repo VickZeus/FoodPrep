@@ -2,6 +2,7 @@ import style from './HomePage.module.css'
 import {useNavigate } from 'react-router-dom'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { useState, useEffect } from 'react';
 function OptionSection()
 {
     let navigate=useNavigate();
@@ -83,31 +84,105 @@ function Footer()
 
 function Recommendation()
 {
-    return(
-        <>
-            <div className={style.recommendation}>No Results Yet !!</div>
-        </>
-    )
-}
+    const [items, setItems] = useState([]);
 
-function SearchBar()
-{
-    return(
-        <div className={style.searchBarSection}>
-            <input className={style.searchBar}></input>
-            <button className={style.searchButton}>
-                <span className="material-icons">search</span>
-            </button>
+    const fetchItems = async (name = '') => {
+        const url = name
+            ? `http://localhost:3000/HomePage?name=${name}`
+            : `http://localhost:3000/HomePage`; // default random
+
+        try {
+            const res = await fetch(url);
+            const data = await res.json();
+
+            if (res.ok) setItems(data);
+            else setItems([]);
+        } catch (err) {
+            console.error('Failed to fetch items:', err);
+            setItems([]);
+        }
+    };
+
+    useEffect(() => {
+        fetchItems();
+    }, []);
+
+    function discountPrice(a,disc)
+    {
+        return a-a*disc/100;
+    }
+
+    return (
+        <div className={style.recContainer}>
+            <h2 className={style.recTitle}>Shop Now!!</h2>
+            <SearchBar onSearch={fetchItems} />
+            {items.length === 0 ? (
+                <div className={style.recommendation}>No Results Yet !!</div>
+            ) : 
+            (
+            <div className={style.recGrid}>
+                {items.map((item, index) => (
+                    <div key={index} className={style.Card}>
+                        <img
+                            src={item.image || '/default.jpg'}
+                            alt={item.name}
+                            className={style.recImage}
+                        />
+                        <div className={style.details}>
+                            <div className={style.details2}>
+                                <div className={style.recName}> Item_Name : {item.name}</div>
+                                <div className={style.recName}>Discount: {item.discount}%</div>
+                            </div>
+
+                            <div className={style.details2}>
+                            <div className={style.recName}>Current Price :₹ {discountPrice(item.price,item.discount)}</div>
+                            <div className={style.recName}>MRP : ₹{item.price}</div>
+                            </div>
+
+                            <div className={style.details2}>
+                            <button className={style.button4}>Add To Cart</button>
+                            <button className={style.button4}>Buy Now</button>
+                            </div>
+
+                        </div>
+                    </div>
+                ))}
+            </div>
+            )}
         </div>
     )
 }
+
+function SearchBar({ onSearch }) {
+    const [query, setQuery] = useState('');
+
+    const handleClick = () => {
+        if (query.trim()) {
+            onSearch(query.trim());
+        }
+    };
+
+    return (
+        <div className={style.searchBarSection}>
+            <input
+                className={style.searchBar}
+                placeholder="Search for an item..."
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+            />
+            <button className={style.searchButton} onClick={handleClick}>
+                <span className="material-icons">search</span>
+            </button>
+        </div>
+    );
+}
+
 
 function HomePage()
 {
     return(
         <>
             <OptionSection/>
-            <SearchBar/>
             <Recommendation/>
             <Footer/>
         </>

@@ -315,3 +315,96 @@
     font-size: min(3vmin,24px);
     margin-left:5px; 
 }
+
+.recContainer 
+{
+    margin:auto;
+    background-color: rgb(255, 255, 141);
+    width:95vw;
+    height:90vh;
+    padding:20px;
+}
+
+.recGrid 
+{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    margin-top: 10px;
+}
+
+
+.Card
+{
+    width:250px;
+    height:250px;
+    border-style: solid;
+    border-radius: 10px;
+    padding:5px;
+    background-color: aliceblue;
+
+
+    display: flex;
+    flex-direction:column;
+}
+
+
+.recImage 
+{
+    width:60%;
+    border-radius: 10px;
+    margin:auto;
+}
+
+.recName
+{
+    font-family:"Zain", sans-serif;
+    font-size: min(2.5vmin,18px); 
+    font-weight: 500;
+}
+
+
+.details 
+{
+    display: flex;
+    flex-direction:column;
+    justify-content: space-evenly;
+}
+
+.details2 
+{
+    display: flex;
+    flex-direction:row;
+    justify-content: space-evenly;
+}
+
+.button4 
+{
+    margin:auto;
+    background-color: rgba(128, 255, 0, 0.594);
+    width:fit-content;
+    height:fit-content;
+    padding:4px;
+    font-size: min(2vmin,18px);
+    border-radius: 10px;
+   font-family:"Zain", sans-serif;
+}
+
+.button4:hover 
+{
+    background-color: rgba(255, 255, 0, 0.594);
+    color:aliceblue;
+    font-weight: 500;
+    text-shadow: 1px 1px 5px rgba(1,1,1,1);
+
+}
+
+
+.recTitle 
+{
+    text-align: center;
+    font-size:max(5vmin,28px);
+    font-family: "Delius Swash Caps", cursive;
+    font-weight:600;
+    color:rgb(240, 239, 237);
+    text-shadow:2px 2px 3px rgb(1,1,1);
+}
