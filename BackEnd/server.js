@@ -9,7 +9,7 @@ async function startServer()
     const flag=await connectDB();
     if(flag)
     {
-        app.listen(process.env.port||3500,(req,res)=>{
+        app.listen(process.env.PORT||3500,()=>{
             console.log('Server is listening to port ',process.env.port||3500)
         })  
     }
