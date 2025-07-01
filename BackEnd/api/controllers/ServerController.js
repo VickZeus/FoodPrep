@@ -198,16 +198,6 @@ app.get('/Register',async(req,res)=>{
 })
 
 
-app.get('/HomePage',async(req,res)=>{
-    try {
-        const items = await Itemmod.aggregate([{ $sample: { size: 10 } }]); // random 10
-        res.json(items);
-    } catch (err) {
-        console.error("Error fetching random items:", err);
-        res.status(500).json({ message: "Server error" });
-    }
-})
-
 app.get('/HomePage', async (req, res) => {
     const nameQuery = req.query.name?.trim().toLowerCase();
 
