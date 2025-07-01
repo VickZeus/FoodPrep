@@ -2,7 +2,7 @@
 const mongoose=require('mongoose')
 const Regmod=require('../model/RegisterSchema')
 const Logmod=require('../model/LoginSchema')
-
+const Itemmod=require('../model/ItemSchema')
 
 const path = require('path')
 const cors = require('cors')
@@ -20,7 +20,42 @@ app.use(express.json())
 app.use(express.static(path.join(__dirname, "..", "FrontEnd", "public")));
 
 
+app.post('/Add',async(req,res)=>{
+    try{
+        console.log("Incoming data:", req.body);
+        let {name,image,discount,quantity,price}=req.body 
+        name=name.trim().toLowerCase()
+        if(await Itemmod.findOne({name})!=null)
+        {
+            console.log("Itemname Already Exists !")
+            res.status(400).json({message:'Itemname Already Taken !',redirect:'/Add'})
+        }
+        else 
+        {
+            console.log("Data:",name,image,discount,quantity,price)
+            const newUser=new Itemmod({name,image,discount,quantity,price})
+            await newUser.save()
+            res.status(200).json({message: "Item Added Successfully !",redirect :'/Inventory'})
+        }
+    }
+    catch(error)
+    {
+        console.error("Error during Item Addition:", error);
+        console.log("Something Went Wrong with POST Request")
+        res.status(500).json({message:"Item Addition Failed !"})
+    }
+})
 
+
+
+app.get('/Inventory',async(req,res)=>{
+    const name = req.query.name?.trim().toLowerCase();
+    if (!name) return res.status(400).json({ error: 'Name missing' });
+    const item = await Itemmod.findOne({ name: name });
+    if (!item) return res.status(404).json({ error: 'Not found' });
+
+    res.json(item);
+})
 
 app.post('/Login',async(req,res)=>{
     console.log('Entered Data : ',req.body)
@@ -31,7 +66,7 @@ app.post('/Login',async(req,res)=>{
 
     if(username===process.env.ad_user && password===process.env.ad_pass )
     {
-        return res.status(200).json({message: 'Administrator Login Successfull',redirect:'/Admin'})
+        return res.status(200).json({message: 'Administrator Login Successfull',redirect:'/Inventory'})
     }
 
     if(username==null)
@@ -65,6 +100,8 @@ app.post('/Login',async(req,res)=>{
         return res.status(400).json({message: 'Invalid Password',redirect:'/Login'})
     }
 })
+
+
 
 async function LogHistory(req,status)
 {

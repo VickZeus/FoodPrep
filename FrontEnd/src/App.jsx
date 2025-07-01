@@ -7,8 +7,9 @@ import {HomePage} from './components/HomePage'
 import Account from './components/Account'
 import Cart from './components/Cart'
 import Support from './components/Support'
-import {AdminUI} from './components/AdminUI'
-import Inventory from './components/Inventory';
+import Inventory from './components/Inventory'
+import Add from './components/Add'
+import Drop from './components/Drop'
 
 
 
@@ -25,7 +26,8 @@ function App()
             <Route path="/Account" element={<Account/>}/>
             <Route path="/Cart" element={<Cart/>}/>
             <Route path="/Support" element={<Support/>}/>
-            <Route path="/Admin" element={<AdminUI/>}/>
+            <Route path="/Add" element={<Add/>}/>
+            <Route path="/Drop" element={<Drop/>}/>
         </Routes>
         </BrowserRouter>
     )

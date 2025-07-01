@@ -13,21 +13,22 @@ function OptionSection()
             <div className={style.title}>FoodPrep</div>
 
             <div className={style.buttonSection}>
-                <button className={style.button} onClick={()=>navigate('/Admin')}>
-                    Home
-                    <span className="material-icons" style={{fontSize:15,verticalAlign:'middle'}}>home</span>
-                </button>
                 <button className={style.button} onClick={()=>navigate('/Inventory')}>
                     Inventory
-                    <span className="material-icons" style={{fontSize:15,verticalAlign:'middle'}}>account_circle</span>
+                    <span className="material-icons" style={{fontSize:16,verticalAlign:'middle'}}>shopping_cart</span>
                 </button>
-                <button className={style.button} onClick={()=>navigate('/Cart')}>
+                <button className={style.button} onClick={()=>navigate('/BestSellers')}>
                     BestSellers
-                     <span className="material-icons" style={{fontSize:18,verticalAlign:'middle'}}>shopping_cart</span>
+                     <span className="material-icons" style={{fontSize:16,verticalAlign:'middle'}}>star</span>
                 </button>
-                <button className={style.button} onClick={()=>navigate('/Support')}>
-                    Support
-                    <span className="material-icons" style={{fontSize:18,verticalAlign:'middle'}}>live_help</span>
+                <button className={style.button} onClick={()=>navigate('/Add')}>
+                    Add
+                    <span className="material-icons" style={{fontSize:18,verticalAlign:'middle'}}>add</span>
+                </button>
+
+                <button className={style.button} onClick={()=>navigate('/Drop')}>
+                    Drop
+                    <span className="material-icons" style={{fontSize:18,verticalAlign:'middle'}}>cancel</span>
                 </button>
             </div>
 

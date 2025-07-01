@@ -189,3 +189,16 @@ CSS Specific to register page begins below
     font-weight:400;
     font-size: min(3vmin,24px);  
 }
+
+
+.content2 
+{
+    margin:auto;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+
+    width:80%;
+    padding:10px;  
+}
