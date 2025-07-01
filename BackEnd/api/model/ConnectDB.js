@@ -7,7 +7,7 @@ async function ConnectDB()
 {
     try 
     {
-        await mongoose.connect(process.env.url)
+        await mongoose.connect(process.env.URL)
     }
     catch(error)
     {

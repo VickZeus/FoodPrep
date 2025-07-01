@@ -10,7 +10,7 @@ async function startServer()
     if(flag)
     {
         app.listen(process.env.PORT||3500,()=>{
-            console.log('Server is listening to port ',process.env.port||3500)
+            console.log('Server is listening to port ',process.env.PORT||3500)
         })  
     }
     else{

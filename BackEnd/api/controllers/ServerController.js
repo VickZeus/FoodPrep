@@ -106,7 +106,7 @@ app.post('/Login',async(req,res)=>{
     console.log('SMaller USer : ',username.trim().toLowerCase())
     console.log('DBData : ',ans)
 
-    if(username===process.env.ad_user && password===process.env.ad_pass )
+    if(username===process.env.AD_USER && password===process.env.AD_PASS )
     {
         return res.status(200).json({message: 'Administrator Login Successfull',redirect:'/Inventory'})
     }
