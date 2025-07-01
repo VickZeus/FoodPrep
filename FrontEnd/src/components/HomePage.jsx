@@ -114,4 +114,4 @@ function HomePage()
     )
 }
 
-export {HomePage,SearchBar,Recommendation,Footer};
+export {HomePage,OptionSection,SearchBar,Recommendation,Footer};

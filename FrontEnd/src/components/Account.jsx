@@ -1,6 +1,7 @@
 import  style from './LoginUser.module.css'
 import { Link } from 'react-router-dom';
 import {useState,useEffect} from 'react'
+import {Footer,OptionSection} from './HomePage'
 function Account()
 {
     const [userData, setUserData] = useState(null);
@@ -42,6 +43,8 @@ function Account()
     }
 
     return(
+        <>
+        <OptionSection/>
         <form onSubmit={handleSubmit}>
         <div className={style.LoginContainer}>
             <div className={style.LoginBox}>
@@ -68,7 +71,10 @@ function Account()
                 </div>
             </div>   
         </div>
-        </form>
+        </form>   
+        <Footer/>     
+        </>
+
 
     )
 }

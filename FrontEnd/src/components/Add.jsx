@@ -1,6 +1,6 @@
 import  style from './LoginUser.module.css'
 import { useState } from 'react';
-import {Footer} from './HomePage'
+import {OptionSection,Footer} from './AdminUI'
 
 function Add()
 {
@@ -42,6 +42,7 @@ function Add()
     }
     return(
         <>
+        <OptionSection/>
         <form onSubmit={handleSubmit}>
         <div className={style.LoginContainer}>
             <div className={style.LoginBox}>

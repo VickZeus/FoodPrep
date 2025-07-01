@@ -20,6 +20,45 @@ app.use(express.json())
 app.use(express.static(path.join(__dirname, "..", "FrontEnd", "public")));
 
 
+
+app.delete('/Drop/:name', async (req, res) => {
+    const itemName = req.params.name.trim().toLowerCase()
+    try {
+        const deletedItem = await Itemmod.findOneAndDelete({ name: itemName })
+
+        if (!deletedItem) {
+            return res.status(404).json({ message: 'Item not found' })
+        }
+        res.json({ message: 'Item deleted successfully', item: deletedItem })
+    } catch (err) {
+        console.error('Error deleting item:', err);
+        res.status(500).json({ message: 'Server error while deleting item' })
+    }
+});
+
+
+app.put('/Inventory/:name', async (req, res) => {
+    const name = req.params.name.trim().toLowerCase();
+    const updatedData = req.body;
+
+    try {
+        const updated = await Itemmod.findOneAndUpdate(
+            { name },
+            updatedData,
+            { new: true }
+        );
+
+        if (!updated) {
+            return res.status(404).json({ message: 'Item not found' });
+        }
+
+        res.json(updated);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Server error' });
+    }
+});
+
 app.post('/Add',async(req,res)=>{
     try{
         console.log("Incoming data:", req.body);

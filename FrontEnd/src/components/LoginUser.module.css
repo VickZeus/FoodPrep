@@ -196,9 +196,9 @@ CSS Specific to register page begins below
     margin:auto;
     display: flex;
     flex-direction: column;
-    justify-content:center;
+    justify-content:flex-start;
     align-items: center;
 
-    width:80%;
+    width:60%;
     padding:10px;  
 }
