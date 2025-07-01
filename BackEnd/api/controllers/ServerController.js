@@ -14,7 +14,9 @@ dotenv.config()
 const express=require('express')
 const app=express()
 
-app.use(cors());
+app.use(cors({
+  origin: 'https://food-prep-b1uk.vercel.app'  
+}));
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
 app.use(express.static(path.join(__dirname, "..", "FrontEnd", "public")));
