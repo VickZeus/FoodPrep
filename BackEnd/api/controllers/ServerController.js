@@ -85,8 +85,6 @@ app.post('/Add',async(req,res)=>{
     }
 })
 
-
-
 app.get('/Inventory',async(req,res)=>{
     const name = req.query.name?.trim().toLowerCase();
     if (!name) return res.status(400).json({ error: 'Name missing' });

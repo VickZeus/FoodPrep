@@ -6,10 +6,11 @@ import RegisterUser from './components/RegisterUser'
 import {HomePage} from './components/HomePage'
 import Account from './components/Account'
 import Cart from './components/Cart'
-import Support from './components/Support'
 import Inventory from './components/Inventory'
 import Add from './components/Add'
 import Drop from './components/Drop'
+import Support from './components/Support'
+import BestSellers from './components/BestSellers'
 
 
 
@@ -25,9 +26,11 @@ function App()
             <Route path="/HomePage" element={<HomePage/>}/>
             <Route path="/Account" element={<Account/>}/>
             <Route path="/Cart" element={<Cart/>}/>
-            <Route path="/Support" element={<Support/>}/>
             <Route path="/Add" element={<Add/>}/>
             <Route path="/Drop" element={<Drop/>}/>
+            <Route path="/Support" element={<Support/>}/>
+            <Route path="/BestSellers" element={<BestSellers/>}/>
+
         </Routes>
         </BrowserRouter>
     )

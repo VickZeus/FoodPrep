@@ -1,12 +1,12 @@
-import style from './Support.module.css'
+import { OptionSection,Footer } from "./HomePage";
 function Support()
 {
     return(
-        <div className={style.page}>
-            <div className={style.box}>
-                <h1>Got An Issue ? </h1>
-            </div>
-        </div>
+        <>
+            <OptionSection/>
+            <h1>Support Page Under Development !!</h1>
+            <Footer/>
+        </>
     )
 }
 
