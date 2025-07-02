@@ -21,7 +21,7 @@ function Add()
         price
         };
 
-        fetch('https://your-app-name.onrender.com/Add', {
+        fetch('https://food-prep-b1uk.vercel.app/Add', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
