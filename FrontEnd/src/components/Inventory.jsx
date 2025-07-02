@@ -98,7 +98,7 @@ function ItemDetails({item})
 
     const handleSave = async () => {
         try {
-            const res = await fetch('https://foodprep-vhkl.onrender.com/Inventory/${formData.name}'
+            const res = await fetch(`https://foodprep-vhkl.onrender.com/Inventory/${formData.name}`
 , {
                 method: 'PUT',
                 headers: {
